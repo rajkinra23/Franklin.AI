@@ -6,7 +6,7 @@ import os
 TITLE = "Grand Theft Auto V"
 ROOT = 'screens/'
 
-def grab_screen(dst, title=TITLE):
+def grab_screen(title=TITLE):
     # Get the GTA V window.
     window = win32gui.FindWindow(None, TITLE)
 
