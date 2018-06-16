@@ -23,3 +23,10 @@ def grab_screen(title=TITLE):
     # Return the screen. We could save it/show it for debugging, but
     # that increases the latency tremendously.
     return screen
+
+
+# If this is run as a main, take screen shots.
+if __name__ == '__main__':
+    for i in range(1, 11):
+        s = grab_screen()
+        s.save(os.path.join(ROOT, 'test_%s.png' % str(i)))
