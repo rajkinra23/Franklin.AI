@@ -1,5 +1,7 @@
 """
 Robust functions for grabbing and saving screenshots on Windows.
+
+File forked from Desktopmagic: https://github.com/ludios/Desktopmagic/blob/master/desktopmagic/scripts/screengrab_torture_test.py
 """
 
 from __future__ import print_function
