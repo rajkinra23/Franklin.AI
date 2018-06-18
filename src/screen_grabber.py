@@ -15,7 +15,7 @@ def grab_screen(title=TITLE):
 
     # Resize the bbox slightly. We seem to get a few excess pixels on the left
     # and right, lets cut those.
-    trim_bbox = (bbox[0] + 5, bbox[1], bbox[2] - 5, bbox[3] - 5)
+    trim_bbox = (bbox[0], bbox[1], bbox[2], bbox[3])
 
     # Capture the screenshot using the bounding box.
     screen = getRectAsImage(trim_bbox)
@@ -23,7 +23,6 @@ def grab_screen(title=TITLE):
     # Return the screen. We could save it/show it for debugging, but
     # that increases the latency tremendously.
     return screen
-
 
 # If this is run as a main, take screen shots.
 if __name__ == '__main__':
