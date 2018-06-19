@@ -54,7 +54,15 @@ def test_object_detection():
     output_dict = odl.run_inference_for_single_image(test_image, model)
 
     # Log the detections.
-    print(output_dict)
+    objs = set()
+    scores = output_dict['detection_scores']
+    classes = output_dict['detection_classes']
+    for i in range(len(scores)):
+        score = scores[i]
+        c = classes[i]
+        if score >= 0.2:
+            objs.add(category_index[c]['name'])
+    print("Objects detected: %s" % str(objs))
 
     # Save the output.
     vis_util.visualize_boxes_and_labels_on_image_array(
@@ -66,7 +74,7 @@ def test_object_detection():
         instance_masks=output_dict.get('detection_masks'),
         use_normalized_coordinates=True,
         line_thickness=8,
-        min_score_thresh=0.2)
+        min_score_thresh=0.4)
     vis_util.save_image_array_as_png(test_image, 'test_screens/test_image.png')
 
 if __name__ == '__main__':

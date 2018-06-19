@@ -8,7 +8,12 @@ ROOT = 'screens/'
 
 def grab_screen(title=TITLE):
     # Get the GTA V window.
-    window = win32gui.FindWindow(None, TITLE)
+    try:
+        window = win32gui.FindWindow(None, TITLE)
+        assert window != 0
+    except Exception as e:
+        print("Window not found: %s" % title)
+        return None
 
     # Locate the bounding box of the game screen.
     bbox = win32gui.GetWindowRect(window)
@@ -27,5 +32,6 @@ def grab_screen(title=TITLE):
 # If this is run as a main, take screen shots.
 if __name__ == '__main__':
     for i in range(1, 11):
-        s = grab_screen()
-        s.save(os.path.join(ROOT, 'test_%s.png' % str(i)))
+        s = grab_screen('Microsoft Word')
+        if s:
+            s.save(os.path.join(ROOT, 'test_%s.png' % str(i)))
