@@ -1,3 +1,6 @@
 [submodule "src/models"]
 	path = src/models
 	url = https://github.com/tensorflow/models
+[submodule "src/ssd_keras"]
+	path = src/ssd_keras
+	url = https://github.com/pierluigiferrari/ssd_keras.git
